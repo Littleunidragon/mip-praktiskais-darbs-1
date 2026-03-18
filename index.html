@@ -63,25 +63,40 @@
         </div>
     </div>
 
-    <!--  Pats spēles konteiners  -->
-    <div class="hidden w-full p-5" id="gameContainer">
-        <div class="grid grid-cols-2 gap-5">
-            <div class="p-5 rounded-lg bg-neutral-100 border border-neutral-300">
+    <!--  spēles konteiners  -->
+    <div class="hidden w-full p-5 flex flex-col gap-10" id="gameContainer">
+        <!--   spēles stāvokļa konteiners     -->
+        <div class="flex justify-between items-center gap-5">
+            <div class="flex flex-col items-center p-5 rounded-lg bg-neutral-100 border border-neutral-300 w-[250px]">
                 <p>Tavi punkti</p>
-                <span>0</span>
+                <span id="humanPoints" class="text-6xl font-black">0</span>
             </div>
-            <div class="p-5 rounded-lg bg-neutral-100 border border-neutral-300">
+            <div class="flex flex-col items-center">
+                <p class="text-lg font-semibold">Šī brīža skaitlis</p>
+                <span id="currentNumber" class="text-8xl font-black">0</span>
+            </div>
+            <div class="flex flex-col items-center p-5 rounded-lg bg-neutral-100 border border-neutral-300 w-[250px]">
                 <p>Datora punkti</p>
-                <span>0</span>
+                <span id="computerPoints" class="text-6xl font-black">0</span>
             </div>
         </div>
-        <div class="">
-            <button id="divideByTwo">Dalīt ar 2</button>
-            <button id="divideByThree">Dalīt ar 3</button>
+
+        <!--   pogu konteiners    -->
+        <div class="grid grid-cols-2 gap-5 w-full text-white">
+            <button id="divideByTwo" class="flex flex-col items-center py-15 rounded-lg bg-sky-500 hover:bg-sky-600 duration-200 cursor-pointer text-2xl">
+                <span class="uppercase font-semibold">Dalīt ar 2</span>
+                <span class="text-sm text-neutral-200 italic">+2 punkti datoram</span>
+            </button>
+            <button id="divideByThree" class="flex flex-col items-center py-15 rounded-lg bg-sky-500 hover:bg-sky-600 duration-200 cursor-pointer text-2xl">
+                <span class="uppercase font-semibold">Dalīt ar 3</span>
+                <span class="text-sm text-neutral-200 italic">+3 punkti Tev</span>
+            </button>
         </div>
+
+        <!--   gājienu saraksts    -->
         <div class="">
             <h2>Iepriekšējo gājienu saraksts</h2>
-            <ol id="moveList">
+            <ol id="history">
             </ol>
         </div>
     </div>

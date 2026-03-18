@@ -1,12 +1,18 @@
 import {Game} from "./game/Game.js";
+import {updateHistory} from "./helpers/updateHistory.js";
 
 const game = new Game();
+const currentNumber = document.getElementById('currentNumber');
 
 // konteineri
 const firstStepContainer = document.getElementById('firstStep');
 const secondStepContainer = document.getElementById('secondStep');
 const thirdStepContainer = document.getElementById('thirdStep');
 const gameContainer = document.getElementById('gameContainer');
+
+const historyContainer = document.getElementById('history');
+const humanPoints = document.getElementById('humanPoints');
+const computerPoints = document.getElementById('computerPoints');
 
 
 // 1. solis, izvēlēties kas sāk spēli
@@ -56,11 +62,46 @@ numbers.forEach((number) => {
 		game.setStartingNumber(number);
 		thirdStepContainer.classList.add('hidden'); // aizver trešo soli
 		gameContainer.classList.remove('hidden'); // atver spēles konteineru
-		console.log(`the starting number will be ${number}`);
+		currentNumber.innerText = number;
+		game.startGame();
+		updateState();
 	});
 
 	optionContainer.append(button);
 });
+
+document.getElementById('divideByTwo').addEventListener('click', () => {
+	handleMove(2);
+});
+
+document.getElementById('divideByThree').addEventListener('click', () => {
+	handleMove(3);
+});
+
+function handleMove(divisor) {
+	if (!game.humanMove(divisor)) return;
+
+	updateState();
+	if (game.isOver()) { endGame(); return; }
+
+	game.computerMove();
+	updateState();
+	if (game.isOver()) { endGame(); }
+}
+
+function updateState() {
+	currentNumber.innerText = game.current.number;
+	humanPoints.innerHTML = game.current.humanScore;
+	computerPoints.innerHTML = game.current.computerScore;
+	updateHistory(historyContainer, game.history);
+}
+
+function endGame() {
+	console.log(game.getWinner());
+	// šeit vari paslēpt pogas, parādīt uzvarētāju utt.
+	document.getElementById('divideByTwo').disabled = true;
+	document.getElementById('divideByThree').disabled = true;
+}
 
 
 
