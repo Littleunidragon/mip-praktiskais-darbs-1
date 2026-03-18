@@ -50,7 +50,7 @@ const optionContainer = document.getElementById('options');
 numbers.forEach((number) => {
 	const button = document.createElement('button');
 	button.textContent = number;
-	button.classList.add('startingNumberButton')
+	button.classList.add('py-10', 'rounded-lg', 'bg-sky-500', 'hover:bg-sky-600', 'duration-200', 'cursor-pointer')
 
 	button.addEventListener('click', () => {
 		game.selectStartingNumber(number);

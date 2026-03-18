@@ -5,36 +5,85 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="style/style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Komanda 33 - Praktiskais darbs 1</title>
 </head>
 <body>
-<main>
+<main class="flex flex-col justify-center min-h-screen w-full p-10">
     <!--  1. solis - izvēlēties kas sāk spēli  -->
-    <div id="firstStep">
-        <h1>Izvēlies kas sāk spēli</h1>
-        <button id="chooseHuman">Cilvēks</button>
-        <button id="chooseComputer">Dators</button>
+    <div id="firstStep" class="flex flex-col gap-5 justify-center items-center bg-neutral-100 border border-neutral-300 rounded-lg p-5">
+
+        <!--   progresa līnija (šis tikai vizuāli)   -->
+        <div class="grid grid-cols-3 gap-3 w-full">
+            <span class="bg-sky-500 h-[4px] w-full rounded-lg"></span>
+            <span class="bg-neutral-200 h-[4px] w-full rounded-lg"></span>
+            <span class="bg-neutral-200 h-[4px] w-full rounded-lg"></span>
+        </div>
+
+        <h1 class="text-4xl font-bold mt-5">1. Izvēlies kas sāk spēli</h1>
+
+        <div class="w-full grid grid-cols-2 gap-5 text-white">
+            <button id="chooseHuman" class="py-10 rounded-lg bg-sky-500 hover:bg-sky-600 duration-200 cursor-pointer">Cilvēks</button>
+            <button id="chooseComputer" class="p-5 rounded-lg bg-sky-500 hover:bg-sky-600 duration-200 cursor-pointer">Dators</button>
+        </div>
     </div>
 
     <!--  2. solis - algoritma izvēle  -->
-    <div class="hidden" id="secondStep">
-        <h1>Izvēlies datora algoritmu</h1>
-        <button id="chooseMinMax">min-max</button>
-        <button id="chooseAlfaBeta">alfa-beta</button>
+    <div id="secondStep" class="hidden flex flex-col gap-5 justify-center items-center bg-neutral-100 border border-neutral-300 rounded-lg p-5">
+
+        <!--   progresa līnija (šis tikai vizuāli)   -->
+        <div class="grid grid-cols-3 gap-3 w-full">
+            <span class="bg-sky-500 h-[4px] w-full rounded-lg"></span>
+            <span class="bg-sky-500 h-[4px] w-full rounded-lg"></span>
+            <span class="bg-neutral-200 h-[4px] w-full rounded-lg"></span>
+        </div>
+
+        <h1 class="text-4xl font-bold mt-5">2. Izvēlies datora algoritmu</h1>
+
+        <div class="w-full grid grid-cols-2 gap-5 text-white">
+            <button id="chooseMinMax" class="py-10 rounded-lg bg-sky-500 hover:bg-sky-600 duration-200 cursor-pointer">Min-Max</button>
+            <button id="chooseAlfaBeta" class="py-10 rounded-lg bg-sky-500 hover:bg-sky-600 duration-200 cursor-pointer">Alfa-Beta</button>
+        </div>
     </div>
 
     <!--  3. - ģenerētā sākuma skaitļa izvēle  -->
-    <div class="hidden" id="thirdStep">
-        <h1>Izvēlies ar kādu skaitli sākt spēli</h1>
-        <div id="options">
+    <div id="thirdStep" class="hidden flex flex-col gap-5 justify-center items-center bg-neutral-100 border border-neutral-300 rounded-lg p-5">
+
+        <!--   progresa līnija (šis tikai vizuāli)   -->
+        <div class="grid grid-cols-3 gap-3 w-full">
+            <span class="bg-sky-500 h-[4px] w-full rounded-lg"></span>
+            <span class="bg-sky-500 h-[4px] w-full rounded-lg"></span>
+            <span class="bg-sky-500 h-[4px] w-full rounded-lg"></span>
+        </div>
+
+        <h1 class="text-4xl font-bold mt-5">3. Izvēlies ar kādu skaitli sākt spēli</h1>
+
+        <div class="w-full grid grid-cols-5 gap-5 text-white" id="options">
             <!-- šeit parādīsies ģenerētie skaitļi kā pogas -->
         </div>
     </div>
 
     <!--  Pats spēles konteiners  -->
-    <div class="hidden" id="gameContainer">
-        <h1>Spēle</h1>
+    <div class="hidden w-full p-5" id="gameContainer">
+        <div class="grid grid-cols-2 gap-5">
+            <div class="p-5 rounded-lg bg-neutral-100 border border-neutral-300">
+                <p>Tavi punkti</p>
+                <span>0</span>
+            </div>
+            <div class="p-5 rounded-lg bg-neutral-100 border border-neutral-300">
+                <p>Datora punkti</p>
+                <span>0</span>
+            </div>
+        </div>
+        <div class="">
+            <button id="divideByTwo">Dalīt ar 2</button>
+            <button id="divideByThree">Dalīt ar 3</button>
+        </div>
+        <div class="">
+            <h2>Iepriekšējo gājienu saraksts</h2>
+            <ol id="moveList">
+            </ol>
+        </div>
     </div>
 </main>
 </body>
