@@ -1,28 +1,18 @@
-import {range} from "../config.js";
+import {GameSetup} from "./GameSetup.js";
 
-export class Game {
+export class Game extends GameSetup {
 	constructor() {
-		this.starter = '';
-		this.startingPlayer = '';
-		this.algorithm = '';
-		this.startingNumber = '';
+		super();
+		this.tree = null;
+		this.current = null;
+		this.history = [];
 	}
 
-	setStartingPlayer(player) {
-		this.startingPlayer = player;
+
 	}
 
-	setAlgorithm(algorithm) {
-		this.algorithm = algorithm;
 	}
 
-	setStartingNumber(number) {
-		this.startingNumber = number;
-	}
-
-	generateNumber() {
-		const [max, min] = range;
-		const numbers = [];
 	computerMove() {
 		if(this.algorithm === 'minmax') {
 			this.current = this.#getBestMove(this.current);
@@ -34,15 +24,10 @@ export class Game {
 		}
 	}
 
-		// šeit veicam ciklu, līdz tiek atrasti 5 randomizēti skaitļi kas dalās ar 2 un 3
-		while(numbers.length < 5) {
-			const generatedNumber = Math.floor(Math.random() * (max - min + 1)) + min
 	#getBestMove(node) {
 		let bestScore = -Infinity;
 		let bestChild = null;
 
-			if((generatedNumber % 3 === 0) && (generatedNumber % 2 === 0)) {
-				numbers.push(generatedNumber);
 		for (const child of node.children) {
 			const score = this.#minimax(child);
 			if (score > bestScore) {
@@ -51,7 +36,6 @@ export class Game {
 			}
 		}
 
-		return numbers;
 		return bestChild;
 	}
 
