@@ -11,8 +11,4 @@ export class GameNode {
 	isGameEnd() {
 		return this.children.length <= 0 || this.number <= 10;
 	}
-
-	isLeaf() {
-		return this.number <= 10;
-	}
 }
