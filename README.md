@@ -29,6 +29,7 @@ Visa iespējamā konfigurācija pieejama `config.js` failā.
 
 **Konfigurācijas failā sastopamie mainīgie un to nozīme:**
 - **range**: pirmais masīva elements norādas minimālo un otrais masīva elements norāda maksimālo pēc nejaušības izvēlēto skaitļu robežu.
+- **maxTreeDepth**: Norāda spēles koka ģenerācijas dziļumu
 
 ## Lokālās palaišanas soļi
 Seko šiem punktiem, lai lokāli palaistu šo projektu:
